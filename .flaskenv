@@ -1,0 +1,5 @@
+FLASK_APP=myphp.py
+FLASK_ENV=development
+MYPHP_SETUP=False
+MAIL_SERVER=localhost
+MAIL_PORT=8025

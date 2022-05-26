@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+    <h1>Questions List</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+        {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <hr>
+    <a href="{{ url_for('questions.add_question') }}" class="btn btn-success"><i class="fas fa-plus"></i> Add new</a>
+    <hr>
+    <div class="row">
+        {% for question in questions %}
+        <div class="col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">{{question.id}}</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
+                            <div class="dropdown-header">Actions:</div>
+                            <a class="dropdown-item" href="{{ url_for('questions.edit_question', question_id=question.id) }}">Edit</a>
+                            <a class="dropdown-item" href="{{ url_for('questions.delete_question', question_id=question.id) }}">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    {{ question.text | safe }}
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+{% endblock %}

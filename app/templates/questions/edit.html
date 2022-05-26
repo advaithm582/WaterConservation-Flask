@@ -1,0 +1,30 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+    {% if msg %}
+    <div class="alert alert-success" role="alert">
+        {{ msg }}
+    </div>
+    {% endif %}
+
+    {% if edit %}
+    <h1>Edit Announcement</h1>
+    {% else %}
+    <h1>Add Announcement</h1>
+    {% endif %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.text.label }}<br>
+            {{ form.text(size=32, class="form-control", id="sn-te", autocomplete="off") }}<br>
+            {% for error in form.text.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
+{% endblock %}
+
+{% block custom_js %}
+<script src="{{ url_for('static', filename='js/sn-load.js') }}"></script>
+{% endblock %}

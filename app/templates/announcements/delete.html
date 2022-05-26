@@ -1,0 +1,25 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+    {% if msg %}
+    <div class="alert alert-danger" role="alert">
+        {{ msg }}
+    </div>
+    {% endif %}
+
+    <h1>Delete Announcement</h1>
+    <div class="alert alert-danger" role="alert">
+        <b>WARNING:</b> Deleted announcements are deleted forever. You can't undo it.
+    </div>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.confirmation.label }}<br>
+            {{ form.confirmation(size=32, class="form-control", autocomplete="off") }}<br>
+            {% for error in form.confirmation.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <p>{{ form.submit(class="btn btn-danger") }}</p>
+    </form>
+{% endblock %}
