@@ -44,6 +44,11 @@ def new_evaluation():
             time_to_wash_vessel=form.t_dishwash.data,
             saved_using_rwh=form.s_rwh.data
         )
+        wc.calculate()
+        db.session.add(wc)
+        db.session.commit()
+        flash("Added your water conservation report successfully!")
+        return redirect("water_conservation.index")
     
     return render_template("water_conservation/new.html",
                            form=form)
