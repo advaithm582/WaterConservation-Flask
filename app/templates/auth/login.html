@@ -49,9 +49,20 @@
                             <div class="d-grid">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     {{ form.submit(class="btn btn-primary btn-login text-uppercase fw-bold") }}
-                                    <a href="{{ url_for("auth.reset_password_request") }}" class="btn btn-secondary btn-login text-uppercase fw-bold">Forgot Password</a>
+                                    <!-- <a href="{{ url_for("auth.reset_password_request") }}" class="btn btn-secondary btn-login text-uppercase fw-bold">Forgot Password</a> -->
                                 </div>
                             </div>
+							<hr class="my-4">
+							<div class="d-grid mb-2">
+								<a class="btn btn-success btn-login text-uppercase fw-bold" href="{{ url_for('auth.public_registration') }}">
+									<i class="fas fa-user-plus me-2"></i> Register
+								</a>
+							</div>
+							<div class="d-grid mb-2">
+								<a class="btn btn-secondary btn-login text-uppercase fw-bold" href="{{ url_for('auth.reset_password_request') }}">
+									<i class="fas fa-key me-2"></i> Forgot Password
+								</a>
+							</div>
                         </form>
                         
                     </div>

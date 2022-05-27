@@ -61,4 +61,5 @@ def new_evaluation():
 def leaderboard():
     leaderlst = WaterConservation.query.order_by(WaterConservation.total_water_used.asc())
 
-    return render_template("water_conservation/leaderboard.html", leaders=leaderlst)
+    return render_template("water_conservation/leaderboard.html", leaders=leaderlst,
+                           enumerate=enumerate)

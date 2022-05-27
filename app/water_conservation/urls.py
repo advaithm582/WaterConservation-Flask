@@ -19,3 +19,4 @@ from app.water_conservation import views as v
 
 bp.add_url_rule("/", view_func=v.index)
 bp.add_url_rule("/evaluate/new", view_func=v.new_evaluation, methods=['GET', 'POST'])
+bp.add_url_rule("/leaderboard", view_func=v.leaderboard)

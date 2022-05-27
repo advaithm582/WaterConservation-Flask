@@ -235,8 +235,8 @@ class WaterConservation(db.Model):
 
     def calculate(self):
         self.total_water_used = (
-            + (self.no_of_leaky_taps * self.delta_leakage_per_min)
-            + (self.avg_flow_rate * self.time_to_wash_vessel)
+            + (self.no_of_leaky_taps * self.delta_leakage_per_min * 1440 * 30) # per day *month
+            + (self.avg_flow_rate * self.time_to_wash_vessel * 30) # per month
             - (self.saved_using_rwh * 1000)
             )
 
