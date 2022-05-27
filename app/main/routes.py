@@ -13,7 +13,14 @@
 # You should have received a copy of the GNU General Public License along
 # with MyPHP. If not, see <https://www.gnu.org/licenses/>. 
 
-from flask import render_template, redirect, url_for, current_app, flash
+from flask import (
+    render_template,
+    redirect,
+    url_for,
+    current_app,
+    flash,
+    request
+)
 from flask_login import login_required, current_user
 
 from app import db
@@ -46,11 +53,12 @@ def index():
     return render_template("main/index.html", **kw)
 
 def flash_test():
+    redir = request.args.get("redirect_view", 'main.index')
     flash('TEST')
     flash('TEST info', 'info')
     flash('TEST warning', 'warning')
     flash('Danger', 'danger')
     flash('message primary', 'primary')
     flash('message secondary', 'secondary')
-    return redirect(url_for('main.index'))
+    return redirect(url_for(redir))
 

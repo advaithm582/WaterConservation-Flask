@@ -1,0 +1,27 @@
+{% extends "water_conservation/base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<div class="row">
+    <h1>Leaderboard</h1>
+	<div class="col-md-12">
+		<table class="table table-striped">
+			<thead class="thead-light">
+				<th scope="col">Rank</th>
+				<th scope="col">Name</th>
+				<th scope="col">Total Water Used (lesser is better)</th>
+			</thead>
+			<tbody>
+				{% for rank, userwc in enumerate(leaders, 1) %}
+				<tr>
+					<td scope="row">{{ rank }}</td>
+					<td>{{ userwc.user.get_name() }}</td>
+					<td>{{ userwc.total_water_used }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

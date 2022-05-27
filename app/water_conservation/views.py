@@ -32,6 +32,10 @@ def index():
 
 
 def new_evaluation():
+    if current_user.water_profile.first():
+        flash("You have already filled out the form!", "danger")
+        return redirect(url_for("water_conservation.index"))
+
     form = WaterSavingForm()
     
     if form.validate_on_submit():
@@ -48,7 +52,13 @@ def new_evaluation():
         db.session.add(wc)
         db.session.commit()
         flash("Added your water conservation report successfully!")
-        return redirect("water_conservation.index")
+        return redirect(url_for("water_conservation.index"))
     
     return render_template("water_conservation/new.html",
                            form=form)
+
+
+def leaderboard():
+    leaderlst = WaterConservation.query.order_by(WaterConservation.total_water_used.asc())
+
+    return render_template("water_conservation/leaderboard.html", leaders=leaderlst)
