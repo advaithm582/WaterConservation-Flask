@@ -1,4 +1,4 @@
-{% from 'bootstrap/form.html' import render_form %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_hidden_errors %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +32,16 @@
                 <p>E-mail address: <a href="mailto:{{ email }}">{{ email }}</a></p>
             </div>
             <div class="col-md-6">
-                {{ render_form(form) }}
+                {{ form.hidden_tag() }}
+				{{ render_hidden_errors(form) }}
+				{{ render_field(form.username) }}
+				{{ render_field(form.password) }}
+				{{ render_field(form.password2) }}
 				<br>
 				<hr>
 				<br>
 				{{ xcaptcha }}
+				{{ render_field(form.submit) }}
             </div>
         </div>
         
