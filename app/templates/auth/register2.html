@@ -32,6 +32,7 @@
                 <p>E-mail address: <a href="mailto:{{ email }}">{{ email }}</a></p>
             </div>
             <div class="col-md-6">
+			<form action="" method="post">
                 {{ form.hidden_tag() }}
 				{{ render_hidden_errors(form) }}
 				{{ render_field(form.username) }}
@@ -42,6 +43,7 @@
 				<br>
 				{{ xcaptcha }}
 				{{ render_field(form.submit) }}
+			</form>
             </div>
         </div>
         
