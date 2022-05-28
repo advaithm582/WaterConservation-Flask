@@ -27,6 +27,7 @@
         {% endwith %}
         <h1>Password Reset</h1>
         {{ render_form(form) }}
+		{{ xcaptcha }}
     </div>
     {{ bootstrap.load_js() }}
 </body>
