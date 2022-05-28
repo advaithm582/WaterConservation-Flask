@@ -23,17 +23,20 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Captcha Site Key
-    XCAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+    XCAPTCHA_SITE_KEY = os.environ.get("SITE_KEY") or \
+                        "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 
     # Captcha Secret Key
-    XCAPTCHA_SECRET_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+    XCAPTCHA_SECRET_KEY = os.environ.get("SECRET_KEY") or \
+                          "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 
     
     # This enables HCaptcha. Uncomment these 3 lines to use
     # HCaptcha.
-    # XCAPTCHA_VERIFY_URL="https://hcaptcha.com/siteverify"
-    # XCAPTCHA_API_URL="https://hcaptcha.com/1/api.js"
-    # XCAPTCHA_DIV_CLASS="h-captcha"
+    if os.envrion.get("HCAPTCHA", "false").lower() == 'true':
+        XCAPTCHA_VERIFY_URL="https://hcaptcha.com/siteverify"
+        XCAPTCHA_API_URL="https://hcaptcha.com/1/api.js"
+        XCAPTCHA_DIV_CLASS="h-captcha"
     
     SESSION_COOKIE_NAME = "myphp_session"
     REMEMBER_COOKIE_NAME = "myphp_remember_token"
