@@ -33,7 +33,7 @@ class Config(object):
     
     # This enables HCaptcha. Uncomment these 3 lines to use
     # HCaptcha.
-    if os.envrion.get("HCAPTCHA", "false").lower() == 'true':
+    if os.environ.get("HCAPTCHA", "false").lower() == 'true':
         XCAPTCHA_VERIFY_URL="https://hcaptcha.com/siteverify"
         XCAPTCHA_API_URL="https://hcaptcha.com/1/api.js"
         XCAPTCHA_DIV_CLASS="h-captcha"
