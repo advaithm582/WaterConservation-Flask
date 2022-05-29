@@ -31,6 +31,7 @@ def index():
     return render_template("water_conservation/index.html")
 
 
+@login_required
 def new_evaluation():
     if current_user.water_profile.first():
         flash("You have already filled out the form!", "danger")
