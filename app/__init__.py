@@ -115,6 +115,14 @@ def create_app(config_class=Config):
 
     # if not app.debug and not app.testing:
         # ... no changes to logging setup
+    
+    # Applications
+    
+    from app.main.helpers import applications_table
+    
+    @app.context_processor
+    def apptable():
+        return {'applications_table':applications_table}
 
     return app
 

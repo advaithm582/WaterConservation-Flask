@@ -43,9 +43,10 @@
                 <!-- Card Body -->
                 <div class="collapse show" id="applications">
                     <div class="card-body">
-                        <ul>
+                        {# <ul>
                             <li><a href="{{ url_for("water_conservation.index") }}">Water Conservation</a></li>
-                        </ul>
+                        </ul> #}
+                        {{ applications_table()|safe }}
                     </div>
                 </div>
                 

@@ -19,4 +19,5 @@ from app.main import routes as r
 
 bp.add_url_rule("/", view_func=r.determine_home)
 bp.add_url_rule("/home", view_func=r.index)
-bp.add_url_rule("/ft", view_func=r.flash_test)
+# bp.add_url_rule("/ft", view_func=r.flash_test)
+# bp.add_url_rule("/_internal/application_list", view_func=r.applications)

@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU General Public License along
 # with MyPHP. If not, see <https://www.gnu.org/licenses/>. 
 
+
 from flask import (
     render_template,
     redirect,
@@ -25,6 +26,7 @@ from flask_login import login_required, current_user
 
 from app import db
 from app.main import bp
+from app.main.helpers import applications_table
 
 
 def determine_home():
@@ -45,10 +47,10 @@ def index():
     
     Generate a page with gives links to other apps.
     """
-
+    
     kw = {
         "title" : "Admin Dashboard",
-        #"username" : current_user.username
+        "apps": applications_table()
     }
     return render_template("main/index.html", **kw)
 
@@ -61,4 +63,6 @@ def flash_test():
     flash('message primary', 'primary')
     flash('message secondary', 'secondary')
     return redirect(url_for(redir))
+
+
 
