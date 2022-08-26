@@ -55,6 +55,11 @@ class User(UserMixin, db.Model):
             str: UniqueID
         """
         return self.unique_id
+    
+    def generate_token(self):
+        return jwt.encode({'uid': self.unique_id,
+                'exp': time.time() + 6000},
+                current_app.config['SECRET_KEY'], algorithm='HS256')
 
     def set_password(self, password: str) -> None:
         self.password_hash = generate_password_hash(password)
