@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU General Public License along
 # with MyPHP. If not, see <https://www.gnu.org/licenses/>. 
 
+from email.policy import default
 import typing as t
 import secrets
 import string
@@ -261,6 +262,22 @@ class WaterConservation(db.Model):
             )
 
 
+class AMSDCApp(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    uniqname = db.Column(db.String(64), index=True, unique=True)
+    name = db.Column(db.String(64), nullable=False)
+    released = db.Column(db.DateTime, default=datetime.utcnow)
+    lastupdated = db.Column(db.DateTime, default=datetime.utcnow)
+    latestver = db.Column(db.String(64), default="0.1.0")
+    license = db.Column(db.String(30), nullable=False)
+    programming_lang = db.Column(db.String(64), default="Python 3")
+    lang = db.Column(db.String(100), default="English")
+    type = db.Column(db.String(64))
+    copyright = db.Column(db.String(64))
+    repository = db.Column(db.String(224))
+    installer = db.Column(db.String(224))
+    shortdesc = db.Column(db.String(500))
+    longdesc = db.Column(db.TEXT(2400000)) # md
 # class Announcement(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     title = db.Column(db.String(64))

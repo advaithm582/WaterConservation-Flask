@@ -102,6 +102,9 @@ def create_app(config_class=Config):
     
     from app.water_conservation import bp as water_conservation_bp
     app.register_blueprint(water_conservation_bp, url_prefix="/save_water")
+    
+    from app.amsdcapps import bp as amsdcapps_bp
+    app.register_blueprint(amsdcapps_bp, url_prefix="/amsdc/")
 
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
