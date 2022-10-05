@@ -29,7 +29,7 @@
                     <td>{{ item.lastupdated.strftime("%b %d, %Y") }}</td>
                     <td>{{ item.latestver }}</td>
                     <td>{{ item.proglang }}</td>
-                    <td>{{ item.shortdesc[:76] }}</td>
+                    <td>{{ item.shortdesc }}</td>
                     <td><a href="{{ url_for("amsdcapps.getsoft", productID=item.uniqname) }}">Link</a></td>
                 </tr>
                 {% endfor %}
