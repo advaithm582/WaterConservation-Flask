@@ -22,3 +22,4 @@ bp.add_url_rule("/software/management/addSoftware.aspx", view_func=v.add, method
 bp.add_url_rule("/software/management/editSoftware.aspx", view_func=v.edit, methods=['GET', 'POST'])
 # bp.add_url_rule("/leaderboard", view_func=v.leaderboard)
 bp.add_url_rule("/software/getDetails", view_func=v.getsoft)
+bp.add_url_rule("/software/listAll", view_func=v.listall)

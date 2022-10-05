@@ -103,3 +103,17 @@ def getsoft():
             abort(400)
     else:
         abort(400)
+        
+def listall():
+    if request.args.get("sortBy", "lastupdated", type=str.lower) == "query":
+        abort(400, "Even I am smart, OK?")
+    meth = getattr(AMSDCApp, 
+                   request.args.get("sortBy", "lastupdated", type=str.lower), 
+                   AMSDCApp.lastupdated)
+    ascdesc = getattr(meth,
+                      request.args.get("order", "asc", type=str.lower),
+                      meth.asc)
+    data = AMSDCApp.query.order_by(ascdesc())
+
+    return render_template("amsdcapps/list.html", data=data)
+    

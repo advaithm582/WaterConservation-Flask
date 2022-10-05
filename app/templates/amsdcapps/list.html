@@ -1,0 +1,40 @@
+{% from 'bootstrap/form.html' import render_form %}
+{% extends "amsdcapps/base.html" %}
+
+{% block title %}List Apps{% endblock %}
+
+{% block content %}
+<div class="row">
+    <h1>App List</h1>
+    
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name (<a href="{{ url_for("amsdcapps.listall", sortBy="name", order="asc") }}">&uarr;</a>&nbsp;|&nbsp;<a href="{{ url_for("amsdcapps.listall", sortBy="name", order="desc") }}">&darr;</a>)</th>
+                    <th scope="col">Released (<a href="{{ url_for("amsdcapps.listall", sortBy="released", order="asc") }}">&uarr;</a>&nbsp;|&nbsp;<a href="{{ url_for("amsdcapps.listall", sortBy="released", order="desc") }}">&darr;</a>)</th>
+                    <th scope="col">Last Updated (<a href="{{ url_for("amsdcapps.listall", sortBy="lastupdated", order="asc") }}">&uarr;</a>&nbsp;|&nbsp;<a href="{{ url_for("amsdcapps.listall", sortBy="lastupdated", order="desc") }}">&darr;</a>)</th>
+                    <th scope="col">Latest Ver.</th>
+                    <th scope="col">Prog. Lang</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Link</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <th>{{ item.name }}</th>
+                    <td>{{ item.released.strftime("%b %d, %Y") }}</td>
+                    <td>{{ item.lastupdated.strftime("%b %d, %Y") }}</td>
+                    <td>{{ item.latestver }}</td>
+                    <td>{{ item.proglang }}</td>
+                    <td>{{ item.shortdesc[:76] }}</td>
+                    <td><a href="{{ url_for("amsdcapps.getsoft", productID=item.uniqname) }}">Link</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
